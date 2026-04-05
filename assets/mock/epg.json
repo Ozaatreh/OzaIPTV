@@ -1,0 +1,24 @@
+{
+  "programs": [
+    {"id":"epg_001","channelId":"ch_001","title":"Big Buck Bunny — Full Feature","description":"The beloved open-source animated short film.","category":"Animation","startTimeOffset":-30,"durationMinutes":60},
+    {"id":"epg_002","channelId":"ch_001","title":"Behind the Scenes: Blender","description":"How open-source animation is made.","category":"Documentary","startTimeOffset":30,"durationMinutes":45},
+    {"id":"epg_003","channelId":"ch_002","title":"Sintel — Director's Cut","description":"A fantasy quest to find a dragon companion.","category":"Fantasy","startTimeOffset":-15,"durationMinutes":45},
+    {"id":"epg_004","channelId":"ch_003","title":"Tears of Steel — Premiere","description":"Humans versus robots in a dystopian future.","category":"Sci-Fi","startTimeOffset":-20,"durationMinutes":40},
+    {"id":"epg_005","channelId":"ch_004","title":"Streaming Technology Showcase","description":"Demonstrating advanced HLS features.","category":"Technology","startTimeOffset":-45,"durationMinutes":90},
+    {"id":"epg_006","channelId":"ch_006","title":"World News Tonight","description":"International headlines and analysis.","category":"News","startTimeOffset":-30,"durationMinutes":60},
+    {"id":"epg_007","channelId":"ch_007","title":"DW Focus","description":"In-depth reporting from Germany.","category":"News","startTimeOffset":-20,"durationMinutes":30},
+    {"id":"epg_008","channelId":"ch_008","title":"نشرة الأخبار","description":"الأخبار العاجلة والتحليلات","category":"أخبار","startTimeOffset":-25,"durationMinutes":60},
+    {"id":"epg_009","channelId":"ch_009","title":"بانوراما","description":"برنامج تحليلي سياسي","category":"سياسة","startTimeOffset":-30,"durationMinutes":45},
+    {"id":"epg_010","channelId":"ch_010","title":"آخر الأخبار","description":"تغطية إخبارية مباشرة","category":"أخبار","startTimeOffset":-15,"durationMinutes":30},
+    {"id":"epg_011","channelId":"ch_011","title":"مسلسل الهيبة","description":"دراما عربية شيّقة","category":"دراما","startTimeOffset":-40,"durationMinutes":60},
+    {"id":"epg_012","channelId":"ch_012","title":"فيلم عربي","description":"فيلم سينمائي عربي كلاسيكي","category":"أفلام","startTimeOffset":-60,"durationMinutes":120},
+    {"id":"epg_013","channelId":"ch_013","title":"تلاوة القرآن الكريم","description":"بث مباشر لتلاوة القرآن","category":"ديني","startTimeOffset":-90,"durationMinutes":180},
+    {"id":"epg_014","channelId":"ch_020","title":"سبيس تون — رسوم متحركة","description":"حلقات جديدة من الرسوم المتحركة","category":"أطفال","startTimeOffset":-35,"durationMinutes":60},
+    {"id":"epg_015","channelId":"ch_024","title":"NHK Newsline","description":"Latest news from Japan and Asia.","category":"News","startTimeOffset":-20,"durationMinutes":30},
+    {"id":"epg_016","channelId":"ch_027","title":"Planet Earth in 4K","description":"Stunning nature footage.","category":"Nature","startTimeOffset":-60,"durationMinutes":120},
+    {"id":"epg_017","channelId":"ch_029","title":"Animation Hour","description":"Family-friendly animated content.","category":"Kids","startTimeOffset":-35,"durationMinutes":60},
+    {"id":"epg_018","channelId":"ch_034","title":"Sports Highlights","description":"Best sporting moments.","category":"Sports","startTimeOffset":-25,"durationMinutes":60},
+    {"id":"epg_019","channelId":"ch_038","title":"Tech Review","description":"Latest gadget reviews.","category":"Technology","startTimeOffset":-30,"durationMinutes":45},
+    {"id":"epg_020","channelId":"ch_040","title":"Ancient Civilizations","description":"Exploring history.","category":"Education","startTimeOffset":-45,"durationMinutes":60}
+  ]
+}

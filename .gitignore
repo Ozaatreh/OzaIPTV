@@ -1,0 +1,89 @@
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.lock
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.atom/
+.buildlog/
+
+# Android
+**/android/**/gradle-wrapper.jar
+**/android/.gradle
+**/android/captures/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
+**/android/key.properties
+**/android/**/*.keystore
+**/android/**/*.jks
+!**/android/app/debug.keystore
+
+# iOS
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/DerivedData/
+**/ios/.symlinks/
+**/ios/**/Pods/
+**/ios/**/.symlinks/
+**/ios/**/Flutter/App.framework
+**/ios/**/Flutter/Flutter.framework
+**/ios/**/Flutter/Flutter.podspec
+**/ios/**/Flutter/Generated.xcconfig
+**/ios/**/Flutter/ephemeral/
+**/ios/**/Flutter/flutter_export_environment.sh
+
+# Windows
+**/windows/flutter/generated_plugin_registrant.cc
+**/windows/flutter/generated_plugin_registrant.h
+**/windows/flutter/generated_plugins.cmake
+
+# macOS
+**/macos/Flutter/GeneratedPluginRegistrant.swift
+**/macos/Flutter/ephemeral/
+
+# Coverage
+coverage/
+*.lcov
+
+# Symbols
+app.*.symbols
+
+# Exceptions
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+!/dev/conductor/test/data/flutter_release_test/**/.packages
+
+# Generated
+*.g.dart
+*.freezed.dart
+lib/generated/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Secrets
+*.keystore
+*.jks
+key.properties
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
