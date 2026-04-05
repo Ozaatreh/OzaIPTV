@@ -10,24 +10,15 @@ final streamValidatorProvider = Provider<StreamValidator>(
   (ref) => StreamValidator(),
 );
 
-/// Validates stream URLs before playback to avoid wasting time
-/// on dead/unreachable sources.
-///
-/// Performs a lightweight HTTP HEAD or partial GET to check:
-/// - DNS resolution
-/// - TCP connectivity
-/// - HTTP response code (200/206/302 = valid)
-/// - Content-type sniffing (must look like media)
 class StreamValidator {
   final _logger = Logger(printer: SimplePrinter());
 
-  /// Validate a stream source URL. Returns a result with
-  /// success/failure and diagnostics.
   Future<ValidationResult> validate(
     StreamSource source, {
     Duration timeout = const Duration(seconds: 8),
   }) async {
     final uri = Uri.tryParse(source.url);
+
     if (uri == null || !uri.hasScheme) {
       return ValidationResult(
         isValid: false,
@@ -51,55 +42,90 @@ class StreamValidator {
     final stopwatch = Stopwatch()..start();
 
     try {
+      final host = uri.host;
+      if (host.isEmpty) {
+        return ValidationResult(
+          isValid: false,
+          sourceId: source.id,
+          url: source.url,
+          reason: 'Missing host',
+          latencyMs: 0,
+        );
+      }
+
+      // 1) DNS check only
+      final lookup = await InternetAddress.lookup(host).timeout(timeout);
+      if (lookup.isEmpty || lookup.first.rawAddress.isEmpty) {
+        stopwatch.stop();
+        return ValidationResult(
+          isValid: false,
+          sourceId: source.id,
+          url: source.url,
+          reason: 'DNS lookup failed',
+          latencyMs: stopwatch.elapsedMilliseconds,
+        );
+      }
+
+      // 2) Soft probe
       final client = HttpClient()
         ..connectionTimeout = timeout
         ..badCertificateCallback = (_, __, ___) => true;
 
-      final request = await client
-          .getUrl(uri)
-          .timeout(timeout);
+      try {
+        final request = await client.getUrl(uri).timeout(timeout);
+        request.headers.set(HttpHeaders.userAgentHeader, 'OzaIPTV/1.0');
+        request.headers.set(HttpHeaders.acceptHeader, '*/*');
+        request.headers.set(HttpHeaders.connectionHeader, 'keep-alive');
+        request.followRedirects = true;
+        request.maxRedirects = 5;
 
-      // Only fetch headers, not the entire stream
-      request.headers.set('Range', 'bytes=0-1');
-      request.followRedirects = true;
-      request.maxRedirects = 5;
+        final response = await request.close().timeout(timeout);
+        final code = response.statusCode;
 
-      final response = await request.close().timeout(timeout);
+        await response.drain<void>();
+        client.close(force: true);
+        stopwatch.stop();
 
-      stopwatch.stop();
-      final latency = stopwatch.elapsedMilliseconds;
+        // For streaming endpoints, strict probe checks often create false negatives.
+        // If DNS works and we got any real HTTP response, let the player try it.
+        final softValid = code >= 200 && code < 500;
 
-      // Drain the response to free the connection
-      await response.drain<void>();
-      client.close(force: true);
+        if (softValid) {
+          _logger.d('Soft-validated ${source.name}: HTTP $code');
+          return ValidationResult(
+            isValid: true,
+            sourceId: source.id,
+            url: source.url,
+            reason: 'HTTP $code (soft valid)',
+            httpStatus: code,
+            latencyMs: stopwatch.elapsedMilliseconds,
+          );
+        }
 
-      final code = response.statusCode;
-      final isOk = code == 200 || code == 206 || code == 302 || code == 301;
-
-      if (!isOk) {
-        _logger.w('Validation failed for ${source.name}: HTTP $code');
         return ValidationResult(
           isValid: false,
           sourceId: source.id,
           url: source.url,
           reason: 'HTTP $code',
           httpStatus: code,
-          latencyMs: latency,
+          latencyMs: stopwatch.elapsedMilliseconds,
+        );
+      } catch (_) {
+        client.close(force: true);
+        stopwatch.stop();
+
+        // DNS passed, so do not hard-fail here.
+        // Let the native player attempt playback.
+        return ValidationResult(
+          isValid: true,
+          sourceId: source.id,
+          url: source.url,
+          reason: 'Probe skipped after DNS success',
+          latencyMs: stopwatch.elapsedMilliseconds,
         );
       }
-
-      _logger.d('Validated ${source.name}: ${latency}ms');
-      return ValidationResult(
-        isValid: true,
-        sourceId: source.id,
-        url: source.url,
-        reason: 'OK',
-        httpStatus: code,
-        latencyMs: latency,
-      );
     } on TimeoutException {
       stopwatch.stop();
-      _logger.w('Validation timeout for ${source.name}');
       return ValidationResult(
         isValid: false,
         sourceId: source.id,
