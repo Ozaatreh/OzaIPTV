@@ -1,9 +1,263 @@
 {
   "categories": [
+    {
+      "id": "cat_ar_news",
+      "name": "Arabic News",
+      "iconName": "newspaper",
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_ar_religious",
+      "name": "Arabic Religious",
+      "iconName": "auto_awesome",
+      "sortOrder": 1
+    },
     { "id": "cat_providers", "name": "Providers", "iconName": "tv", "sortOrder": 0 },
     { "id": "cat_demo", "name": "Demo Streams", "iconName": "bug_report", "sortOrder": 1 }
   ],
   "channels": [
+     {
+      "id": "ar_001",
+      "name": "Al Jazeera Arabic",
+      "categoryId": "cat_ar_news",
+      "description": "Official live news feed",
+      "country": "QA",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "news",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_live",
+          "label": "Open live",
+          "url": "https://www.youtube.com/c/aljazeera/live"
+        }
+      ]
+    },
+    {
+      "id": "ar_002",
+      "name": "Al Jazeera Mubasher",
+      "categoryId": "cat_ar_news",
+      "description": "Official live stream page",
+      "country": "QA",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "news",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "external_url",
+          "label": "Open live",
+          "url": "https://www.aljazeera.net/video/live/%D8%A7%D9%84%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9-%D9%85%D8%A8%D8%A7%D8%B4%D8%B1"
+        }
+      ]
+    },
+    {
+      "id": "ar_003",
+      "name": "Al Arabiya",
+      "categoryId": "cat_ar_news",
+      "description": "Official live news stream",
+      "country": "SA",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "news",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_live",
+          "label": "Open live",
+          "url": "https://www.youtube.com/watch?v=n7eQejkXbnM"
+        }
+      ]
+    },
+    {
+      "id": "ar_004",
+      "name": "AlHadath",
+      "categoryId": "cat_ar_news",
+      "description": "Official live news stream",
+      "country": "SA",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "news",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_live",
+          "label": "Open live",
+          "url": "https://www.youtube.com/c/AlHadath/live"
+        }
+      ]
+    },
+    {
+      "id": "ar_005",
+      "name": "Sky News Arabia",
+      "categoryId": "cat_ar_news",
+      "description": "Official live news stream",
+      "country": "AE",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "news",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_live",
+          "label": "Open live",
+          "url": "https://www.youtube.com/watch?v=U--OjmpjF5o"
+        }
+      ]
+    },
+    {
+      "id": "ar_006",
+      "name": "TRT عربي",
+      "categoryId": "cat_ar_news",
+      "description": "Official live coverage",
+      "country": "TR",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "news",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_channel",
+          "label": "Open channel",
+          "url": "https://www.youtube.com/trtarabi"
+        }
+      ]
+    },
+    {
+      "id": "ar_007",
+      "name": "التلفزيون العربي أخبار",
+      "categoryId": "cat_ar_news",
+      "description": "Official live news stream",
+      "country": "QA",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "news",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_live",
+          "label": "Open live",
+          "url": "https://www.youtube.com/watch?v=e2RgSa1Wt5o"
+        }
+      ]
+    },
+    {
+      "id": "ar_008",
+      "name": "France 24 Arabic",
+      "categoryId": "cat_ar_news",
+      "description": "Official live news stream",
+      "country": "FR",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "news",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_live",
+          "label": "Open live",
+          "url": "https://www.youtube.com/c/FRANCE24Arabic/live"
+        }
+      ]
+    },
+    {
+      "id": "ar_009",
+      "name": "Al Mayadeen",
+      "categoryId": "cat_ar_news",
+      "description": "Official live news stream",
+      "country": "LB",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "news",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_live",
+          "label": "Open live",
+          "url": "https://www.youtube.com/watch?v=amnWRZOKWIY"
+        }
+      ]
+    },
+    {
+      "id": "ar_010",
+      "name": "قناة القرآن الكريم",
+      "categoryId": "cat_ar_religious",
+      "description": "Official Makkah live feed",
+      "country": "SA",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "religious",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_live",
+          "label": "Open live",
+          "url": "https://www.youtube.com/watch?v=Cm1v4bteXbI"
+        }
+      ]
+    },
+    {
+      "id": "ar_011",
+      "name": "قناة السنة النبوية",
+      "categoryId": "cat_ar_religious",
+      "description": "Official Madinah live feed",
+      "country": "SA",
+      "language": "ar",
+      "region": "MENA",
+      "tags": [
+        "religious",
+        "arabic",
+        "official",
+        "free"
+      ],
+      "access": [
+        {
+          "type": "youtube_live",
+          "label": "Open live",
+          "url": "https://www.youtube.com/live/9A1S0xAPVIs"
+        }
+      ]
+    },
     {
       "id": "provider_bein",
       "name": "beIN",
